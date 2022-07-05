@@ -1,0 +1,19 @@
+// https://leetcode.com/problems/minimum-falling-path-sum-ii
+
+class Solution:
+    def minFallingPathSum(self, grid: List[List[int]]) -> int:
+        n = len(grid)
+        m = len(grid[0])
+        f = [0] * m
+        f1 = [0] * m
+        inf = float('inf')
+        for j in range(m):
+            f[j] = grid[0][j]
+        for i in range(1, n):
+            for j in range(m):
+                f1[j] = inf
+                for k in range(m):
+                    if k != j:
+                        f1[j] = min(f1[j], grid[i][j] + f[k])
+            f,f1 = f1,f
+        return min(f)
