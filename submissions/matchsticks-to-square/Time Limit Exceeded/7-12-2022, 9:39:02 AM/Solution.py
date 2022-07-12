@@ -1,0 +1,22 @@
+// https://leetcode.com/problems/matchsticks-to-square
+
+class Solution:
+    def backtrack(self, i, n, matchsticks, s, edge):
+        if i == n:
+            if (edge[0] == edge[1] == edge[2] == edge[3]) and (sum(edge) == s):
+                self.sol = True
+            return
+        if self.sol == True:
+            return
+        for k in range(4):
+            if edge[k] + matchsticks[i] <= s // 4:
+                edge[k] += matchsticks[i]
+                self.backtrack(i + 1, n, matchsticks, s, edge)
+                edge[k] -= matchsticks[i]
+    def makesquare(self, matchsticks: List[int]) -> bool:
+        n = len(matchsticks)
+        s = sum(matchsticks)
+        edge = [0, 0, 0, 0]
+        self.sol = False
+        self.backtrack(0, n, matchsticks, s, edge)
+        return self.sol
