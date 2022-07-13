@@ -1,0 +1,10 @@
+// https://leetcode.com/problems/duplicate-emails
+
+# Write your MySQL query statement below
+SELECT DISTINCT email as Email
+FROM Person as per
+WHERE (
+    SELECT COUNT(*)
+    FROM Person
+    WHERE per.email = email
+) > 1

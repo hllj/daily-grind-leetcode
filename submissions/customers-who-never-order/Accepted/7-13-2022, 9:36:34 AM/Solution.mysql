@@ -1,0 +1,10 @@
+// https://leetcode.com/problems/customers-who-never-order
+
+# Write your MySQL query statement below
+SELECT name as Customers
+FROM Customers AS cus
+WHERE (
+    SELECT COUNT(*)
+    FROM Orders AS ord
+    WHERE ord.customerId = cus.id
+) = 0;
