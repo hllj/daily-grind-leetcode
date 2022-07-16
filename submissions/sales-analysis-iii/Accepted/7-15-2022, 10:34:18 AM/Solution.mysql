@@ -1,0 +1,7 @@
+// https://leetcode.com/problems/sales-analysis-iii
+
+# Write your MySQL query statement below
+SELECT s.product_id, p.product_name
+FROM Sales s LEFT JOIN Product p ON s.product_id = p.product_id
+GROUP BY p.product_id
+HAVING min(s.sale_date) >= DATE("2019-01-01") AND max(s.sale_date) <= DATE("2019-03-31")
