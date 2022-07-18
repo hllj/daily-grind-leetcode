@@ -1,0 +1,8 @@
+// https://leetcode.com/problems/article-views-i
+
+# Write your MySQL query statement below
+SELECT author_id as id
+FROM Views
+WHERE author_id = viewer_id
+GROUP BY author_id
+HAVING COUNT(DISTINCT viewer_id) > 0
